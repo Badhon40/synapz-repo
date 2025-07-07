@@ -16,7 +16,7 @@ export default function Login() {
         <div className="flex items-center justify-center mb-6">
           <img src="logo2.png" alt="Synapz"  />
         </div>
-        <h2 className="text-2xl font-bold text-gray-700 text-center mb-">Sign in</h2>
+        <h2 className="text-2xl font-bold text-gray-700 text-center mb-2">Sign in</h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-600">Email</label>
@@ -53,7 +53,7 @@ export default function Login() {
         </form>
         <p className="text-center text-sm text-gray-600 mt-6">
           Don’t have an account?
-          <a href="#" className="text-violet-600 font-medium hover:underline ml-1">Sign up</a>
+          <a href="/signup" className="text-violet-600 font-medium hover:underline ml-1">Sign up</a>
         </p>
       </div>
     </div>
