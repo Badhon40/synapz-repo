@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { IoMdEye } from "react-icons/io";
+import { FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -12,15 +16,19 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="bg-white shadow-xl rounded-2xl p-8 max-w-sm w-full">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white shadow-xl rounded-2xl p-12 max-w-sm md:max-w-lg w-full">
         <div className="flex items-center justify-center mb-6">
           <img src="logo2.png" alt="Synapz" />
         </div>
-        <h2 className="text-2xl font-bold text-gray-700 text-center mb-2">Sign Up </h2>
+        <h2 className="text-2xl font-bold text-gray-700 text-center mb-2">
+          Sign Up{" "}
+        </h2>
         <form onSubmit={handleRegister} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-600">Full Name</label>
+            <label className="block text-sm font-medium text-gray-600">
+              Full Name
+            </label>
             <input
               type="text"
               required
@@ -31,7 +39,24 @@ export default function SignUp() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-600">Email</label>
+            <label className="block text-sm font-medium text-gray-600">
+              User Name
+            </label>
+            <input
+              type="text"
+              required
+              placeholder="Enter your username"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
+            />
+          </div>
+          
+         
+          <div>
+            <label className="block text-sm font-medium text-gray-600">
+              Email
+            </label>
             <input
               type="email"
               required
@@ -42,15 +67,26 @@ export default function SignUp() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-600">Password</label>
-            <input
-              type="password"
-              required
-              placeholder="Create a password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
-            />
+            <label className="block text-sm font-medium text-gray-600">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                required
+                placeholder="Create a password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-4 text-lg text-violet-500"
+              >
+                {showPassword ? <FaEyeSlash /> : <IoMdEye />}
+              </button>
+            </div>
           </div>
           <button
             type="submit"
@@ -61,7 +97,12 @@ export default function SignUp() {
         </form>
         <p className="text-center text-sm text-gray-600 mt-6">
           Already have an account?
-          <a href="/login" className="text-violet-600 font-medium hover:underline ml-1">Sign in</a>
+          <Link
+            to="/login"
+            className="text-violet-600 font-medium hover:underline ml-1"
+          >
+            Sign in
+          </Link>
         </p>
       </div>
     </div>
